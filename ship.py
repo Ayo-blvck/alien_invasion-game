@@ -22,6 +22,8 @@ class Ship:
         #Movement flag
         self.moving_right = False
         self.moving_left = False
+        
+        self.visible = True
     
     def update(self):
         """Update the ships's position based on the movement flag"""
@@ -36,4 +38,10 @@ class Ship:
         
     def blitme(self):
         """Draw the ship at its current location"""
-        self.screen.blit(self.image, self.rect)
+        if self.visible:
+            self.screen.blit(self.image, self.rect)
+        
+    def center_ship(self):
+        """Center the ship on the screen"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
